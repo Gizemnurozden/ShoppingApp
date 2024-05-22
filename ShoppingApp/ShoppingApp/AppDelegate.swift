@@ -6,6 +6,10 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseFirestore
+import FirebaseCore
+import FirebaseAuth
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,6 +18,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // firebase eklentisini buraya ekledim
+        // Use Firebase library to configure APIs
+        
+        FirebaseApp.configure()
+        
+        
+        
         return true
     }
 
