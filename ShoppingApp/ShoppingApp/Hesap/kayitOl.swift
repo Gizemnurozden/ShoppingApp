@@ -6,15 +6,17 @@
 //
 //kayıt için  Firebase auth işlemlerinin tümü burada yapılacak.
 import UIKit
+ 
 import Firebase
-import FirebaseAuth
+
+ 
 
 class kayitOl: UIViewController {
 
     @IBOutlet weak var adinizText: UITextField!
     
     @IBOutlet weak var soyadinizText: UITextField!
-    
+      
     @IBOutlet weak var emailText: UITextField!
     
     @IBOutlet weak var telefonText: UITextField!
@@ -36,7 +38,7 @@ class kayitOl: UIViewController {
     @IBAction func kaydolButonu(_ sender: Any) {
         if emailText.text != "" && sifreText.text != "" {
             Auth.auth().createUser(withEmail: emailText.text!, password: sifreText.text!) { (authata , error) in
-                if error != nil 
+                if error != nil
                 { self.uyariMesaj(titleInput: "Hata", messageInput: error?.localizedDescription ?? "Hata")
                     
                 } 

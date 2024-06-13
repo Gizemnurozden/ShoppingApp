@@ -5,6 +5,8 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="UIMenu" message="Requires Xcode 11 or later." minToolsVersion="11.0" requiredIntegratedClassName="UICommandDiff"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -35,7 +37,7 @@
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="137" id="pFX-oo-2BY"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                             <nil key="textColor"/>
                                                             <color key="highlightedColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -51,7 +53,7 @@
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="57" id="px1-gS-vSF"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -77,6 +79,13 @@
                                                 <constraint firstItem="Erh-Gv-gJA" firstAttribute="bottom" secondItem="EAB-R5-UQI" secondAttribute="bottomMargin" id="efF-wd-ZVC"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="hucreArkaPlan" destination="Erh-Gv-gJA" id="qmS-EW-Otu"/>
+                                            <outlet property="imageViewUrun" destination="4os-bZ-DE7" id="jat-WD-gxO"/>
+                                            <outlet property="labelUrunAd" destination="tBz-0q-17e" id="GFQ-PU-l54"/>
+                                            <outlet property="labelUrunTikla" destination="DrS-oD-Wey" id="X1B-df-zuN"/>
+                                            <segue destination="wx6-g4-PpH" kind="show" identifier="toShopping" id="88q-rW-F1U"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -91,6 +100,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Kategoriler" id="bfJ-lL-ZDf"/>
+                    <connections>
+                        <outlet property="urunTableView" destination="daY-Qc-dgY" id="h71-V2-21Q"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -104,21 +116,91 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SHOPPİNG" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="see-uc-yJt">
-                                <rect key="frame" x="42" y="282" width="271" height="327"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8ZS-Xq-sag">
+                                <rect key="frame" x="0.0" y="144" width="414" height="669"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="x8h-pq-Ijc">
+                                    <size key="itemSize" width="180" height="300"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="urunlerHucre" id="cA6-A7-Hf4" customClass="UrunlerHucre" customModule="ShoppingApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="180" height="300"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="oGe-ce-dbA">
+                                            <rect key="frame" x="0.0" y="0.0" width="180" height="300"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mont" translatesAutoresizingMaskIntoConstraints="NO" id="mi6-Ij-BhA">
+                                                    <rect key="frame" x="-10" y="8" width="200" height="200"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="200" id="1xP-R5-r0N"/>
+                                                        <constraint firstAttribute="height" constant="200" id="M5b-SM-QWn"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Mont" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0MB-KL-M8R">
+                                                    <rect key="frame" x="8" y="228" width="99" height="23"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0g3-u1-qEC">
+                                                    <rect key="frame" x="33" y="259" width="114" height="35"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="filled" title="Sepete Ekle"/>
+                                                    <connections>
+                                                        <action selector="buttonSepeteEkle:" destination="cA6-A7-Hf4" eventType="touchUpInside" id="i6j-sL-xgF"/>
+                                                        <segue destination="vHD-5z-g22" kind="show" identifier="toSepetim" id="waC-8E-fQ1"/>
+                                                    </connections>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="120$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G47-Jl-u2f">
+                                                    <rect key="frame" x="128" y="228" width="38" height="23"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="G47-Jl-u2f" firstAttribute="leading" secondItem="0MB-KL-M8R" secondAttribute="trailing" constant="22" id="7q9-sL-Njy"/>
+                                                <constraint firstItem="mi6-Ij-BhA" firstAttribute="top" secondItem="oGe-ce-dbA" secondAttribute="top" constant="8" id="I95-RH-Y6n"/>
+                                                <constraint firstItem="G47-Jl-u2f" firstAttribute="top" secondItem="0MB-KL-M8R" secondAttribute="top" id="R6x-Hy-R2j"/>
+                                                <constraint firstItem="G47-Jl-u2f" firstAttribute="bottom" secondItem="0MB-KL-M8R" secondAttribute="bottom" id="VyK-EG-Njs"/>
+                                                <constraint firstItem="0MB-KL-M8R" firstAttribute="centerX" secondItem="oGe-ce-dbA" secondAttribute="centerX" constant="-33.5" id="ifA-qI-Grk"/>
+                                                <constraint firstItem="0MB-KL-M8R" firstAttribute="top" secondItem="mi6-Ij-BhA" secondAttribute="bottom" constant="20" id="oGy-DB-z90"/>
+                                                <constraint firstItem="0g3-u1-qEC" firstAttribute="centerX" secondItem="oGe-ce-dbA" secondAttribute="centerX" id="vfB-Cd-tn0"/>
+                                                <constraint firstAttribute="bottom" secondItem="0g3-u1-qEC" secondAttribute="bottom" constant="6" id="ySU-sU-Gmt"/>
+                                                <constraint firstItem="mi6-Ij-BhA" firstAttribute="centerX" secondItem="oGe-ce-dbA" secondAttribute="centerX" id="zum-5X-kEc"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="imageUrun" destination="mi6-Ij-BhA" id="AF5-CH-Kzt"/>
+                                            <outlet property="urunAd" destination="0MB-KL-M8R" id="5GD-yt-PsN"/>
+                                            <outlet property="urunFiyat" destination="G47-Jl-u2f" id="jP9-lh-dRb"/>
+                                            <segue destination="aW9-ub-cFV" kind="show" identifier="toDetay" id="rQx-gg-BTl"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="qQR-1G-huB"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="8ZS-Xq-sag" firstAttribute="top" secondItem="qQR-1G-huB" secondAttribute="top" id="93a-lf-HAG"/>
+                            <constraint firstItem="8ZS-Xq-sag" firstAttribute="trailing" secondItem="qQR-1G-huB" secondAttribute="trailing" id="Kei-eJ-mQ7"/>
+                            <constraint firstItem="8ZS-Xq-sag" firstAttribute="leading" secondItem="qQR-1G-huB" secondAttribute="leading" id="lgW-co-Ofu"/>
+                            <constraint firstItem="qQR-1G-huB" firstAttribute="bottom" secondItem="8ZS-Xq-sag" secondAttribute="bottom" id="rjU-Dj-RTl"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="25z-lq-Maa"/>
+                    <connections>
+                        <outlet property="urunlerCollectionView" destination="8ZS-Xq-sag" id="5aR-wp-3UD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cOS-aX-uBL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2979.7101449275365" y="-468.08035714285711"/>
+            <point key="canvasLocation" x="3011.594202898551" y="-450"/>
         </scene>
         <!--Detay Sayfasi-->
         <scene sceneID="g70-6q-mak">
@@ -128,21 +210,77 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="DETAY SAYFASI" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aDb-oM-uSg">
-                                <rect key="frame" x="110" y="242" width="172" height="198"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Mavi Mont" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jfJ-Rs-C8s">
+                                <rect key="frame" x="86" y="137" width="192" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v5H-l8-tTI">
+                                <rect key="frame" x="29" y="179" width="355" height="378"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ürün hakkında" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3YJ-q7-CXV">
+                                <rect key="frame" x="40" y="565" width="313" height="64"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UwV-L0-dhC">
+                                <rect key="frame" x="237" y="637" width="41" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <menu key="menu" title="Beden" id="UVC-d5-aEv">
+                                    <children>
+                                        <command title="S" discoverabilityTitle="" id="pwb-oj-uqB"/>
+                                        <command title="M" id="Jga-Zg-wBq"/>
+                                        <command title="L" id="XdF-fP-N2O"/>
+                                        <command title="XL" id="mab-8K-rjY"/>
+                                    </children>
+                                </menu>
+                                <state key="normal" title="Size"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Beden seçiniz" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="axV-Sr-C7M">
+                                <rect key="frame" x="40" y="637" width="136" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="140$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hz0-Me-umr">
+                                <rect key="frame" x="40" y="695" width="39" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WfG-NS-O95">
+                                <rect key="frame" x="53" y="724" width="300" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Sepete Ekle"/>
+                                <connections>
+                                    <action selector="buttonSepeteEkle:" destination="aW9-ub-cFV" eventType="touchUpInside" id="kZv-xx-rbM"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6rd-2Y-yid"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="nTN-OI-dHM"/>
+                    <connections>
+                        <outlet property="bedenLabel" destination="axV-Sr-C7M" id="fK5-ZU-apm"/>
+                        <outlet property="sizeSecim" destination="UwV-L0-dhC" id="m3L-cR-DAs"/>
+                        <outlet property="urunAd" destination="jfJ-Rs-C8s" id="cbA-ni-i7f"/>
+                        <outlet property="urunFiyat" destination="Hz0-Me-umr" id="zFf-g1-PCz"/>
+                        <outlet property="urunHakkinda" destination="3YJ-q7-CXV" id="1l3-rQ-eMt"/>
+                        <outlet property="urunResim" destination="v5H-l8-tTI" id="RcV-U6-QEc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8vG-VL-4wA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4118.840579710145" y="-405.80357142857139"/>
+            <point key="canvasLocation" x="4130" y="-450"/>
         </scene>
         <!--Sepetim-->
         <scene sceneID="BgC-tr-3y5">
@@ -153,7 +291,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="PVj-NR-RkN">
-                                <rect key="frame" x="5" y="48" width="404" height="655"/>
+                                <rect key="frame" x="5" y="144" width="404" height="559"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="vHD-5z-g22" id="Pri-QY-cXf"/>
@@ -196,13 +334,14 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Sepetim" image="cart.fill" catalog="system" id="4Ai-F5-x47"/>
+                    <navigationItem key="navigationItem" id="4ei-15-QGo"/>
                     <connections>
                         <outlet property="tableView" destination="PVj-NR-RkN" id="ubW-rR-Rnb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ACu-es-JJq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1128.985507246377" y="429.91071428571428"/>
+            <point key="canvasLocation" x="2239" y="315"/>
         </scene>
         <!--Hesabım-->
         <scene sceneID="W1u-hh-Td5">
@@ -417,10 +556,14 @@
             <point key="canvasLocation" x="1031.8840579710145" y="-450"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="waC-8E-fQ1"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="cart.fill" catalog="system" width="128" height="102"/>
         <image name="house.fill" catalog="system" width="128" height="104"/>
         <image name="kaban" width="505" height="729"/>
+        <image name="mont" width="1200" height="1440"/>
         <image name="person.crop.square.fill" catalog="system" width="128" height="114"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
