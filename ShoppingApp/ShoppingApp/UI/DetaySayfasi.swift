@@ -12,7 +12,9 @@ import FirebaseFirestore
 class DetaySayfasi: UIViewController {
 
     @IBOutlet weak var urunAd: UILabel!
+  
     @IBOutlet weak var urunResim: UIImageView!
+   
     @IBOutlet weak var urunHakkinda: UILabel!
     @IBOutlet weak var urunFiyat: UILabel!
     @IBOutlet weak var bedenLabel: UILabel!

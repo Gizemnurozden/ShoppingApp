@@ -162,8 +162,8 @@
 		C5EAD9CF2C1A38C100E049B5 /* tableview */ = {
 			isa = PBXGroup;
 			children = (
-				C5CF6CEA2BF00C7B00D0056C /* KategorilerHucre.swift */,
 				C5EAD9D02C1A38FE00E049B5 /* UrunlerHucre.swift */,
+				C5CF6CEA2BF00C7B00D0056C /* KategorilerHucre.swift */,
 			);
 			path = tableview;
 			sourceTree = "<group>";
