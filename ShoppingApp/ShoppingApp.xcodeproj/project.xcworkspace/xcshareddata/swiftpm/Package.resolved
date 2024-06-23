@@ -1,5 +1,5 @@
 {
-  "originHash" : "c63c63846d9c539229e96de38d6af51417e28c0ee9a0bc48bd0f0f19d923c329",
+  "originHash" : "039ed8e31b7ce445b8d3f05c025d70a356e0d5fbb7cab431c7cade51a5067f83",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -83,6 +83,15 @@
       }
     },
     {
+      "identity" : "kingfisher",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/onevcat/Kingfisher",
+      "state" : {
+        "revision" : "2ef543ee21d63734e1c004ad6c870255e8716c50",
+        "version" : "7.12.0"
+      }
+    },
+    {
       "identity" : "leveldb",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/firebase/leveldb.git",
@@ -107,6 +116,15 @@
       "state" : {
         "revision" : "540318ecedd63d883069ae7f1ed811a2df00b6ac",
         "version" : "2.4.0"
+      }
+    },
+    {
+      "identity" : "rxswift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ReactiveX/RxSwift",
+      "state" : {
+        "revision" : "b06a8c8596e4c3e8e7788e08e720e3248563ce6a",
+        "version" : "6.7.1"
       }
     },
     {

@@ -84,7 +84,6 @@
                                             <outlet property="imageViewUrun" destination="4os-bZ-DE7" id="jat-WD-gxO"/>
                                             <outlet property="labelUrunAd" destination="tBz-0q-17e" id="GFQ-PU-l54"/>
                                             <outlet property="labelUrunTikla" destination="DrS-oD-Wey" id="X1B-df-zuN"/>
-                                            <segue destination="wx6-g4-PpH" kind="show" identifier="toShopping" id="88q-rW-F1U"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -102,6 +101,7 @@
                     <navigationItem key="navigationItem" title="Kategoriler" id="bfJ-lL-ZDf"/>
                     <connections>
                         <outlet property="urunTableView" destination="daY-Qc-dgY" id="h71-V2-21Q"/>
+                        <segue destination="wx6-g4-PpH" kind="show" identifier="toShopping" id="PiJ-Fs-baw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -178,7 +178,6 @@
                                             <outlet property="imageUrun" destination="mi6-Ij-BhA" id="AF5-CH-Kzt"/>
                                             <outlet property="urunAd" destination="0MB-KL-M8R" id="5GD-yt-PsN"/>
                                             <outlet property="urunFiyat" destination="G47-Jl-u2f" id="jP9-lh-dRb"/>
-                                            <segue destination="aW9-ub-cFV" kind="show" identifier="toDetay" id="rQx-gg-BTl"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -196,6 +195,7 @@
                     <navigationItem key="navigationItem" id="25z-lq-Maa"/>
                     <connections>
                         <outlet property="urunlerCollectionView" destination="8ZS-Xq-sag" id="5aR-wp-3UD"/>
+                        <segue destination="aW9-ub-cFV" kind="show" identifier="toDetay" id="RAL-Pd-DKT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cOS-aX-uBL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -218,45 +218,18 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v5H-l8-tTI">
-                                <rect key="frame" x="29" y="179" width="355" height="378"/>
+                                <rect key="frame" x="29" y="179" width="358" height="318"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ürün hakkında" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3YJ-q7-CXV">
-                                <rect key="frame" x="40" y="565" width="313" height="64"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UwV-L0-dhC">
-                                <rect key="frame" x="237" y="637" width="41" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <menu key="menu" title="Beden" id="UVC-d5-aEv">
-                                    <children>
-                                        <command title="S" discoverabilityTitle="" id="pwb-oj-uqB"/>
-                                        <command title="M" id="Jga-Zg-wBq"/>
-                                        <command title="L" id="XdF-fP-N2O"/>
-                                        <command title="XL" id="mab-8K-rjY"/>
-                                    </children>
-                                </menu>
-                                <state key="normal" title="Size"/>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Beden seçiniz" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="axV-Sr-C7M">
-                                <rect key="frame" x="40" y="637" width="136" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="140$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hz0-Me-umr">
-                                <rect key="frame" x="40" y="695" width="39" height="21"/>
+                                <rect key="frame" x="29" y="505" width="358" height="108"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WfG-NS-O95">
-                                <rect key="frame" x="53" y="724" width="300" height="39"/>
+                                <rect key="frame" x="53" y="741" width="300" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Sepete Ekle"/>
@@ -264,14 +237,37 @@
                                     <action selector="buttonSepeteEkle:" destination="aW9-ub-cFV" eventType="touchUpInside" id="kZv-xx-rbM"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7OB-UD-5hv" userLabel="Bedenler">
+                                <rect key="frame" x="242" y="637" width="62" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <menu key="menu" title="Beden" id="FZg-E2-lpM" userLabel="Beden">
+                                    <children>
+                                        <command title="36" id="CxQ-Db-4Fq" userLabel="36"/>
+                                        <command title="38" id="VGa-lL-TsR" userLabel="38"/>
+                                    </children>
+                                </menu>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Beden seçiniz" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uw7-pO-Ms4">
+                                <rect key="frame" x="29" y="637" width="114" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="140$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hz0-Me-umr">
+                                <rect key="frame" x="29" y="687" width="61" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6rd-2Y-yid"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="nTN-OI-dHM"/>
                     <connections>
-                        <outlet property="bedenLabel" destination="axV-Sr-C7M" id="fK5-ZU-apm"/>
-                        <outlet property="sizeSecim" destination="UwV-L0-dhC" id="m3L-cR-DAs"/>
                         <outlet property="urunAd" destination="jfJ-Rs-C8s" id="cbA-ni-i7f"/>
                         <outlet property="urunFiyat" destination="Hz0-Me-umr" id="zFf-g1-PCz"/>
                         <outlet property="urunHakkinda" destination="3YJ-q7-CXV" id="1l3-rQ-eMt"/>
@@ -280,7 +276,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8vG-VL-4wA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4130" y="-450"/>
+            <point key="canvasLocation" x="4011.594202898551" y="-450"/>
         </scene>
         <!--Sepetim-->
         <scene sceneID="BgC-tr-3y5">
@@ -436,7 +432,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f7i-e4-Mky" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-749.27536231884062" y="707.8125"/>
+            <point key="canvasLocation" x="-714" y="708"/>
         </scene>
         <!--Kayit Ol-->
         <scene sceneID="srr-Lq-HQa">

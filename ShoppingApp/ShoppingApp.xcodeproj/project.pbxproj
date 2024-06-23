@@ -30,6 +30,7 @@
 		C5EAD9CE2C1A339000E049B5 /* Urunler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5EAD9CD2C1A339000E049B5 /* Urunler.swift */; };
 		C5EAD9D12C1A38FE00E049B5 /* UrunlerHucre.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5EAD9D02C1A38FE00E049B5 /* UrunlerHucre.swift */; };
 		C5EAD9D72C1A44DB00E049B5 /* Shopping.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5EAD9D62C1A44DB00E049B5 /* Shopping.swift */; };
+		C5F907362C1B311C00589630 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = C5F907352C1B311C00589630 /* Kingfisher */; };
 		F9EB34EC2BFDDBD5000FC233 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F9EB34EB2BFDDBD5000FC233 /* GoogleService-Info.plist */; };
 		F9EB35032BFDF1C5000FC233 /* girisYap.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EB35022BFDF1C5000FC233 /* girisYap.swift */; };
 		F9EB35052BFDF2BF000FC233 /* kayitOl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EB35042BFDF2BF000FC233 /* kayitOl.swift */; };
@@ -66,6 +67,7 @@
 				C5036EF42C190B3C0001B832 /* FirebaseAuthCombine-Community in Frameworks */,
 				C5036EEC2C190B190001B832 /* FirebaseFirestoreSwift in Frameworks */,
 				C5036EF22C190B300001B832 /* FirebaseStorageCombine-Community in Frameworks */,
+				C5F907362C1B311C00589630 /* Kingfisher in Frameworks */,
 				C5036EE82C190B0E0001B832 /* FirebaseDatabase in Frameworks */,
 				C5036EEA2C190B110001B832 /* FirebaseFirestore in Frameworks */,
 				C5036EE42C190AFD0001B832 /* FirebaseAuth in Frameworks */,
@@ -192,6 +194,7 @@
 				C5036EEF2C190B270001B832 /* FirebaseFirestoreCombine-Community */,
 				C5036EF12C190B300001B832 /* FirebaseStorageCombine-Community */,
 				C5036EF32C190B3C0001B832 /* FirebaseAuthCombine-Community */,
+				C5F907352C1B311C00589630 /* Kingfisher */,
 			);
 			productName = ShoppingApp;
 			productReference = C5CF6CCB2BEFC2F700D0056C /* ShoppingApp.app */;
@@ -223,6 +226,8 @@
 			mainGroup = C5CF6CC22BEFC2F700D0056C;
 			packageReferences = (
 				F9EB34ED2BFDE526000FC233 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				C5F907342C1B311C00589630 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				C5F907372C1B348100589630 /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = C5CF6CCC2BEFC2F700D0056C /* Products */;
 			projectDirPath = "";
@@ -489,6 +494,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		C5F907342C1B311C00589630 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.12.0;
+			};
+		};
+		C5F907372C1B348100589630 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.7.1;
+			};
+		};
 		F9EB34ED2BFDE526000FC233 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -544,6 +565,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F9EB34ED2BFDE526000FC233 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = "FirebaseAuthCombine-Community";
+		};
+		C5F907352C1B311C00589630 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C5F907342C1B311C00589630 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

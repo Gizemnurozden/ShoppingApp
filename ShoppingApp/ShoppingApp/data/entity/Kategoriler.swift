@@ -10,7 +10,7 @@ import Foundation
 
 class Kategoriler {
     
-    var id:Int?
+    var id:String?
     var ad:String?
     var resim:String?
     var kesfet:String?
@@ -20,7 +20,7 @@ class Kategoriler {
         
     }
     
-    init(id: Int?, ad: String? , resim: String? , kesfet: String?) {
+    init(id: String?, ad: String? , resim: String? , kesfet: String?) {
         self.id = id
         self.ad = ad
         self.resim = resim

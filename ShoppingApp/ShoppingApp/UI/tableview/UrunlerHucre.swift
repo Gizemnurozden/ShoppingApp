@@ -14,7 +14,6 @@ class UrunlerHucre: UICollectionViewCell {
     @IBOutlet weak var urunAd: UILabel!
     @IBOutlet weak var urunFiyat: UILabel!
     
-    
     @IBAction func buttonSepeteEkle(_ sender: Any) {
        
     }
