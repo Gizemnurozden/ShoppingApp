@@ -347,22 +347,71 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hesabım" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GbV-pW-dhs">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hesabım" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GbV-pW-dhs">
                                 <rect key="frame" x="51" y="48" width="298" height="46"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="38"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UWV-wh-ENs">
+                                <rect key="frame" x="80" y="213" width="224" height="39"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="39" id="ut5-1i-xU3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kvO-oc-7bj">
+                                <rect key="frame" x="119" y="344" width="163" height="39"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="39" id="TkG-Ed-Va8"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="gray" title="Şifremi güncelle"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lda-EG-6oA">
+                                <rect key="frame" x="126" y="618" width="149" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Çıkış Yap"/>
+                                <connections>
+                                    <action selector="buttoncikis:" destination="Cz5-wh-fsV" eventType="touchUpInside" id="UFI-AZ-sNk"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Wa-J8-F1B">
+                                <rect key="frame" x="80" y="275" width="195" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="y1S-BD-O3M"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="GbV-pW-dhs" firstAttribute="leading" secondItem="y1S-BD-O3M" secondAttribute="leading" constant="51" id="5nx-rc-1Uj"/>
+                            <constraint firstItem="kvO-oc-7bj" firstAttribute="centerX" secondItem="lda-EG-6oA" secondAttribute="centerX" id="85r-i9-83Q"/>
+                            <constraint firstItem="UWV-wh-ENs" firstAttribute="top" secondItem="Yfq-Mb-JfV" secondAttribute="top" constant="213" id="APR-lx-djP"/>
+                            <constraint firstItem="GbV-pW-dhs" firstAttribute="centerX" secondItem="kvO-oc-7bj" secondAttribute="centerX" id="BLR-3U-Xjd"/>
+                            <constraint firstItem="lda-EG-6oA" firstAttribute="leading" secondItem="y1S-BD-O3M" secondAttribute="leading" constant="126" id="I77-8v-Ha6"/>
+                            <constraint firstItem="kvO-oc-7bj" firstAttribute="top" secondItem="UWV-wh-ENs" secondAttribute="bottom" constant="92" id="Qwk-Zi-K4b"/>
+                            <constraint firstItem="GbV-pW-dhs" firstAttribute="top" secondItem="y1S-BD-O3M" secondAttribute="top" id="hvy-HN-yfR"/>
+                            <constraint firstItem="y1S-BD-O3M" firstAttribute="bottom" secondItem="lda-EG-6oA" secondAttribute="bottom" constant="160" id="iCG-Sw-XTM"/>
+                            <constraint firstItem="y1S-BD-O3M" firstAttribute="trailing" secondItem="GbV-pW-dhs" secondAttribute="trailing" constant="65" id="kjU-uK-vOP"/>
+                            <constraint firstItem="UWV-wh-ENs" firstAttribute="leading" secondItem="y1S-BD-O3M" secondAttribute="leading" constant="80" id="lDq-CW-LVo"/>
+                            <constraint firstItem="y1S-BD-O3M" firstAttribute="trailing" secondItem="UWV-wh-ENs" secondAttribute="trailing" constant="110" id="m9v-9Z-StG"/>
+                            <constraint firstItem="kvO-oc-7bj" firstAttribute="leading" secondItem="y1S-BD-O3M" secondAttribute="leading" constant="119" id="raF-16-MiS"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Hesabım" image="person.crop.square.fill" catalog="system" id="SXi-vr-p55"/>
+                    <connections>
+                        <outlet property="emailText" destination="6Wa-J8-F1B" id="tS1-JX-B7O"/>
+                        <outlet property="isimLabel" destination="UWV-wh-ENs" id="7Yo-68-Hjj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lrm-IP-CVO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1675" y="708"/>
+            <point key="canvasLocation" x="-1675.3623188405797" y="707.8125"/>
         </scene>
         <!--Giris Yap-->
         <scene sceneID="R0r-hA-oCs">
@@ -510,7 +559,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JNN-VW-ybM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="118.84057971014494" y="707.8125"/>
+            <point key="canvasLocation" x="119" y="708"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="sT6-SH-aQA">
