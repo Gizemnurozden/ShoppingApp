@@ -278,58 +278,83 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="PVj-NR-RkN">
-                                <rect key="frame" x="5" y="144" width="404" height="559"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="180" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="PVj-NR-RkN">
+                                <rect key="frame" x="5" y="144" width="409" height="559"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="vHD-5z-g22" id="Pri-QY-cXf"/>
-                                    <outlet property="delegate" destination="vHD-5z-g22" id="28V-9v-qJd"/>
-                                </connections>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="sepetimHucre" id="W8B-AK-fdP" customClass="sepetimHucre" customModule="ShoppingApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="409" height="180"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="W8B-AK-fdP" id="N1y-gO-Yum">
+                                            <rect key="frame" x="0.0" y="0.0" width="409" height="180"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X2r-I7-T1U">
+                                                    <rect key="frame" x="20" y="44" width="369" height="125"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wbS-LC-l0U">
+                                                            <rect key="frame" x="16" y="-20" width="128" height="128"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="128" id="4q8-Nf-vzH"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="36" translatesAutoresizingMaskIntoConstraints="NO" id="ZlD-MA-3xQ">
+                                                            <rect key="frame" x="160" y="8" width="98.5" height="90"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ürün başlık" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mSU-9b-EH3">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="98.5" height="24"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fiyat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OTd-wV-7Rt">
+                                                                    <rect key="frame" x="0.0" y="60" width="98.5" height="30"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstItem="wbS-LC-l0U" firstAttribute="leading" secondItem="X2r-I7-T1U" secondAttribute="leading" constant="16" id="AH6-TV-1P4"/>
+                                                        <constraint firstItem="wbS-LC-l0U" firstAttribute="top" secondItem="X2r-I7-T1U" secondAttribute="top" id="Gyn-3L-2fI"/>
+                                                        <constraint firstItem="ZlD-MA-3xQ" firstAttribute="centerY" secondItem="X2r-I7-T1U" secondAttribute="centerY" id="X9g-8X-5ay"/>
+                                                        <constraint firstItem="ZlD-MA-3xQ" firstAttribute="centerY" secondItem="X2r-I7-T1U" secondAttribute="centerY" id="Xb8-Ad-b6j"/>
+                                                        <constraint firstItem="ZlD-MA-3xQ" firstAttribute="leading" secondItem="wbS-LC-l0U" secondAttribute="trailing" constant="16" id="nXA-sD-DkE"/>
+                                                        <constraint firstItem="ZlD-MA-3xQ" firstAttribute="centerY" secondItem="X2r-I7-T1U" secondAttribute="centerY" id="rZd-EI-T9A"/>
+                                                        <constraint firstItem="wbS-LC-l0U" firstAttribute="centerY" secondItem="X2r-I7-T1U" secondAttribute="centerY" id="xm2-cE-Rmg"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="X2r-I7-T1U" firstAttribute="top" secondItem="N1y-gO-Yum" secondAttribute="topMargin" id="k91-x2-3OL"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="hucreArkaplan" destination="X2r-I7-T1U" id="Ru7-DQ-fey"/>
+                                            <outlet property="imageViewSepet" destination="wbS-LC-l0U" id="VqH-ex-nqr"/>
+                                            <outlet property="urunBaslik" destination="mSU-9b-EH3" id="Vrb-vf-Fpj"/>
+                                            <outlet property="urunFiyat" destination="OTd-wV-7Rt" id="Jop-VU-1Th"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M3a-Jc-KQZ">
-                                <rect key="frame" x="248" y="761" width="164" height="52"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Alışverişi Tamamla"/>
-                                <connections>
-                                    <action selector="alisverisiTamamla:" destination="vHD-5z-g22" eventType="touchUpInside" id="Hkf-wB-8kB"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l0z-fr-QPa">
-                                <rect key="frame" x="17" y="761" width="147" height="52"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="gray" title="Sepeti Temizle"/>
-                                <connections>
-                                    <action selector="sepetiTemizle:" destination="vHD-5z-g22" eventType="touchUpInside" id="fgs-Ge-L5l"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Toplam tutar yazalım" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Qo-2m-Psm">
-                                <rect key="frame" x="118" y="711" width="158" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="3iS-UN-tEw"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="3iS-UN-tEw" firstAttribute="bottom" secondItem="PVj-NR-RkN" secondAttribute="bottom" constant="110" id="9Z9-Ca-wkj"/>
-                            <constraint firstItem="PVj-NR-RkN" firstAttribute="top" secondItem="3iS-UN-tEw" secondAttribute="top" id="GMM-pI-Y3H"/>
-                            <constraint firstItem="PVj-NR-RkN" firstAttribute="leading" secondItem="3iS-UN-tEw" secondAttribute="leading" constant="5" id="StV-im-TtZ"/>
-                            <constraint firstItem="PVj-NR-RkN" firstAttribute="centerX" secondItem="gJ0-dF-Ubh" secondAttribute="centerX" id="jdL-ff-V5k"/>
-                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Sepetim" image="cart.fill" catalog="system" id="4Ai-F5-x47"/>
-                    <navigationItem key="navigationItem" id="4ei-15-QGo"/>
+                    <navigationItem key="navigationItem" title="Sepetim" id="4ei-15-QGo"/>
                     <connections>
                         <outlet property="tableView" destination="PVj-NR-RkN" id="ubW-rR-Rnb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ACu-es-JJq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2239" y="315"/>
+            <point key="canvasLocation" x="2237.68115942029" y="314.73214285714283"/>
         </scene>
         <!--Hesabım-->
         <scene sceneID="W1u-hh-Td5">
