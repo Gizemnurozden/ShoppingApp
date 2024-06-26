@@ -3,10 +3,8 @@
 //  ShoppingApp
 //
 //  Created by Gizemnur Özden on 13.06.2024.
-//
 import UIKit
 import FirebaseFirestore
-import Kingfisher
 
 class Shopping: UIViewController {
 
@@ -62,6 +60,22 @@ class Shopping: UIViewController {
         }
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toDetay" {
+            if let urun = sender as? Urunler {
+                let gidilecekVC = segue.destination as! DetaySayfasi
+                gidilecekVC.urun = urun
+            }
+        } else if segue.identifier == "toSepetim" {
+            if let sepetimVC = segue.destination as? Sepetim {
+                // UrunlerHucre'da viewController'ı set ediyoruz
+                if let indexPath = urunlerCollectionView.indexPathsForSelectedItems?.first,
+                   let selectedCell = urunlerCollectionView.cellForItem(at: indexPath) as? UrunlerHucre {
+                    selectedCell.viewController = sepetimVC
+                }
+            }
+        }
+    }
 }
 
 extension Shopping: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -74,31 +88,24 @@ extension Shopping: UICollectionViewDelegate, UICollectionViewDataSource {
 
         let hucre = collectionView.dequeueReusableCell(withReuseIdentifier: "urunlerHucre", for: indexPath) as! UrunlerHucre
 
-     if let resimUrl = urun.resim, let url = URL(string: resimUrl) {
-           hucre.imageUrun.kf.setImage(with: url)
-      }
-        
-       
+        if let resimUrl = urun.resim, let url = URL(string: resimUrl) {
+            hucre.imageUrun.kf.setImage(with: url)
+        }
+
         hucre.urunAd.text = urun.ad
         hucre.urunFiyat.text = "\(urun.fiyat ?? 0.0) $"
 
         hucre.layer.borderColor = UIColor.lightGray.cgColor
         hucre.layer.borderWidth = 0.3
         hucre.layer.cornerRadius = 10.0
+        hucre.viewController = self // viewController'ı hücreye set edin
+        hucre.urun = urun // Ürün bilgilerini hücreye set edin
+        
         return hucre
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let urun = urunlerListesi[indexPath.row]
         performSegue(withIdentifier: "toDetay", sender: urun)
-    }
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toDetay" {
-            if let urun = sender as? Urunler {
-                let gidilecekVC = segue.destination as! DetaySayfasi
-                gidilecekVC.urun = urun
-            }
-        }
     }
 }

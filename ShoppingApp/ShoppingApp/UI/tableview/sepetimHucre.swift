@@ -6,23 +6,44 @@
 //
 
 import UIKit
+import Firebase
+class SepetimHucre: UITableViewCell {
 
-class sepetimHucre: UITableViewCell {
-
-    @IBOutlet weak var imageViewSepet: UIImageView!
-    @IBOutlet weak var hucreArkaplan: UIView!
-    @IBOutlet weak var urunBaslik: UILabel!
+  
+    @IBOutlet weak var hucreArkaPlan: UIView!
+    @IBOutlet weak var imageViewSepetim: UIImageView!
     @IBOutlet weak var urunFiyat: UILabel!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
+    @IBOutlet weak var urunAd: UILabel!
+    @IBOutlet weak var bedenSecim: UILabel!
+    @IBOutlet weak var urunAdedi: UILabel!
+   
 
+    
+  
+    var urunAdedim: Int = 1 {
+           didSet {
+               urunAdedi.text = "\(urunAdedim)"
+           }
+       }
+    override func awakeFromNib() {
+           super.awakeFromNib()
+           
+       }
+    
+   
+    
+    @IBAction func artiTiklandi(_ sender: Any) {
+        urunAdedim += 1
+    }
+    
+    @IBAction func eksiTiklandi(_ sender: Any) {
+        if urunAdedim > 1 {
+                    urunAdedim -= 1
+                    // Burada sepete eklenen ürün adedini azaltabilirsiniz
+                }
+    }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
-
+    
 }
