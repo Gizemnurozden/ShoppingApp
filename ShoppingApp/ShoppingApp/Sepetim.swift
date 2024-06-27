@@ -26,10 +26,13 @@ class Sepetim: UIViewController {
         
         tableView.separatorColor = UIColor(white: 0.95, alpha: 1)
         
-        // Firestore referansı oluştur
         firestore = Firestore.firestore()
         
-        // Firestore'dan sepet verilerini getir
+        fetchSepetUrunleri()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         fetchSepetUrunleri()
     }
     
@@ -42,106 +45,80 @@ class Sepetim: UIViewController {
                     print("Hata: Sepet verileri bulunamadı.")
                     return
                 }
-                
-                // Firestore'dan gelen belgeleri SepetUrun nesnelerine dönüştür
+
                 self.sepetUrunleri = documents.compactMap { document in
                     let data = document.data()
+                    let documentId = document.documentID
                     let urunId = data["urunId"] as? String ?? ""
                     let ad = data["ad"] as? String ?? ""
                     let resim = data["resim"] as? String ?? ""
                     let fiyat = data["fiyat"] as? Double ?? 0.0
                     let secilenBeden = data["secilenBeden"] as? String ?? ""
-                    
-                    return Sepet( urunId: urunId, ad: ad, resim: resim, fiyat: fiyat, secilenBeden: secilenBeden)
+                    let adet = data["adet"] as? Int ?? 1
+
+                    return Sepet(documentId: documentId, urunId: urunId, ad: ad, resim: resim, fiyat: fiyat, secilenBeden: secilenBeden, adet: adet)
                 }
                 
-                // Toplam fiyatı güncelle
                 self.updateTotalPrice()
-                
-                // TableView'ı güncelle
                 self.tableView.reloadData()
             }
         }
     }
+
+    func updateTotalPrice() {
+        totalPrice = sepetUrunleri.reduce(0.0) { $0 + ($1.fiyat * Double($1.adet)) }
+        totalFiyat.text = "Toplam: \(totalPrice) $" // UI elementini güncelle
+    }
     
     @IBAction func alisverisiTamamla(_ sender: Any) {
         // Kullanıcının giriş yapıp yapmadığını kontrol edin
-               if Auth.auth().currentUser != nil {
-                   // Kullanıcı giriş yapmışsa ödeme sayfasına yönlendir
-                   performSegue(withIdentifier: "goToOdemeSayfasi", sender: nil)
-               } else {
-                   // Kullanıcı giriş yapmamışsa uyarı göster
-                   let alert = UIAlertController(title: "Giriş Yapın", message: "Ödeme işlemini gerçekleştirmek için lütfen giriş yapın.", preferredStyle: .alert)
-                   let loginAction = UIAlertAction(title: "Giriş Yap", style: .default) { _ in
-                       self.performSegue(withIdentifier: "goToGirisSayfasi", sender: nil)
-                       // Giriş sayfasına yönlendirme işlemini burada gerçekleştirin
-                   }
-                   let cancelAction = UIAlertAction(title: "İptal", style: .cancel, handler: nil)
-                   
-                   alert.addAction(loginAction)
-                   alert.addAction(cancelAction)
-                   
-                   present(alert, animated: true, completion: nil)
-               }
-        // Segue hazırlığı
-        func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-               if segue.identifier == "goToOdemeSayfasi" {
-                   // Ödeme sayfasına geçiş yapılırken gerekli verileri burada aktarabilirsiniz
-               }
-           }
+        if Auth.auth().currentUser != nil {
+            performSegue(withIdentifier: "goToOdemeSayfasi", sender: nil)
+        } else {
+            let alert = UIAlertController(title: "Giriş Yapın", message: "Ödeme işlemini gerçekleştirmek için lütfen giriş yapın.", preferredStyle: .alert)
+            let loginAction = UIAlertAction(title: "Giriş Yap", style: .default) { _ in
+                self.performSegue(withIdentifier: "goToGirisSayfasi", sender: nil)
+            }
+            let cancelAction = UIAlertAction(title: "İptal", style: .cancel, handler: nil)
+            
+            alert.addAction(loginAction)
+            alert.addAction(cancelAction)
+            
+            present(alert, animated: true, completion: nil)
+        }
     }
     
-    func updateTotalPrice() {
-        
-           totalPrice = sepetUrunleri.reduce(0.0) { $0 + $1.fiyat }
-           totalFiyat.text = "Toplam: \(totalPrice) $" // UI elementini güncelle
-       }
-    
     @IBAction func sepetiTemizle(_ sender: Any) {
+        let alert = UIAlertController(title: "Sepeti Temizle", message: "Sepeti temizlemek istediğinize emin misiniz?", preferredStyle: .alert)
         
-        // Kullanıcıdan onay almak için uyarı mesajı
-              let alert = UIAlertController(title: "Sepeti Temizle", message: "Sepeti temizlemek istediğinize emin misiniz?", preferredStyle: .alert)
-              
-              // Onayla butonu
-              let confirmAction = UIAlertAction(title: "Evet", style: .destructive) { _ in
-                  // Sepeti temizleme işlemi
-                  self.firestore.collection("Sepet").getDocuments { (snapshot, error) in
-                      if let error = error {
-                          print("Hata: Sepet verileri silinirken \(error.localizedDescription)")
-                      } else {
-                          guard let documents = snapshot?.documents else {
-                              print("Hata: Sepet verileri bulunamadı.")
-                              return
-                          }
-                          
-                          for document in documents {
-                              document.reference.delete()
-                          }
-                          
-                          // Lokal diziyi temizle
-                          self.sepetUrunleri.removeAll()
-                          
-                          // Toplam fiyatı sıfırla
-                          self.totalPrice = 0.0
-                          self.totalFiyat.text = "Toplam: \(self.totalPrice) $"
-                          
-                          // TableView'ı güncelle
-                          self.tableView.reloadData()
-                      }
-                  }
-              }
-              
-              // İptal butonu
-              let cancelAction = UIAlertAction(title: "Hayır", style: .cancel, handler: nil)
-              
-              // Uyarı mesajına butonları ekle
-              alert.addAction(confirmAction)
-              alert.addAction(cancelAction)
-              
-              // Uyarı mesajını göster
-              present(alert, animated: true, completion: nil)
-          }
-    
+        let confirmAction = UIAlertAction(title: "Evet", style: .destructive) { _ in
+            self.firestore.collection("Sepet").getDocuments { (snapshot, error) in
+                if let error = error {
+                    print("Hata: Sepet verileri silinirken \(error.localizedDescription)")
+                } else {
+                    guard let documents = snapshot?.documents else {
+                        print("Hata: Sepet verileri bulunamadı.")
+                        return
+                    }
+                    
+                    for document in documents {
+                        document.reference.delete()
+                    }
+                    
+                    self.sepetUrunleri.removeAll()
+                    self.updateTotalPrice()
+                    self.tableView.reloadData()
+                }
+            }
+        }
+        
+        let cancelAction = UIAlertAction(title: "Hayır", style: .cancel, handler: nil)
+        
+        alert.addAction(confirmAction)
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true, completion: nil)
+    }
 }
 
 extension Sepetim: UITableViewDataSource, UITableViewDelegate {
@@ -153,16 +130,61 @@ extension Sepetim: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "sepetHucre", for: indexPath) as! SepetimHucre
         
         let sepetUrun = sepetUrunleri[indexPath.row]
-        
         cell.urunAd.text = sepetUrun.ad
         cell.urunFiyat.text = "\(sepetUrun.fiyat) $"
-        cell.bedenSecim.text = "\(sepetUrun.secilenBeden) bedeni seçtiniz"
+        cell.bedenSecim.text = sepetUrun.secilenBeden
+        cell.urunAdedi.text = "\(sepetUrun.adet)"
         
-        // Resimleri yüklemek için Kingfisher kütüphanesi kullanımı
-        if let resimUrl = URL(string: sepetUrun.resim) {
-            cell.imageViewSepetim.kf.setImage(with: resimUrl)
+        if let url = URL(string: sepetUrun.resim) {
+            cell.imageViewSepetim.kf.setImage(with: url)
+        } else {
+            cell.imageViewSepetim.image = UIImage(named: "placeholder")
         }
+        
+        cell.urunAdedim = sepetUrun.adet
+        cell.documentId = sepetUrun.documentId
+        cell.parentViewController = self
         
         return cell
     }
+    // Sepet Hücre Silme İşlevi
+       func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+           if editingStyle == .delete {
+               let urun = sepetUrunleri[indexPath.row]
+               
+               // Kullanıcıdan onay almak için uyarı mesajı
+               let alert = UIAlertController(title: "Ürünü Sil", message: "Bu ürünü sepetinizden silmek istediğinize emin misiniz?", preferredStyle: .alert)
+               
+               // Onayla butonu
+               let confirmAction = UIAlertAction(title: "Evet", style: .destructive) { _ in
+                   // Firestore'dan öğeyi silme
+                   self.firestore.collection("Sepet").document(urun.documentId).delete { error in
+                       if let error = error {
+                           print("Error removing document: \(error)")
+                       } else {
+                           print("Document successfully removed!")
+                           
+                           // Modeli güncelle
+                           self.sepetUrunleri.remove(at: indexPath.row)
+                           
+                           // Toplam fiyatı güncelle
+                           self.updateTotalPrice()
+                           
+                           // TableView'u güncelle
+                           tableView.deleteRows(at: [indexPath], with: .automatic)
+                       }
+                   }
+               }
+               
+               // İptal butonu
+               let cancelAction = UIAlertAction(title: "Hayır", style: .cancel, handler: nil)
+               
+               // Uyarı mesajına butonları ekle
+               alert.addAction(confirmAction)
+               alert.addAction(cancelAction)
+               
+               // Uyarı mesajını göster
+               present(alert, animated: true, completion: nil)
+           }
+       }
 }

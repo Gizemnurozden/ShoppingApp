@@ -53,7 +53,8 @@ class Shopping: UIViewController {
                     let fiyat = data["fiyat"] as? Double ?? 0.0
                     let detay = data["detay"] as? String ?? "" // Firestore'dan detay bilgisini al
                     let bedenler = data["bedenler"] as? [String] ?? [] // Firestore'dan bedenler bilgisini al
-                    return Urunler(id: id, ad: ad, resim: resim, fiyat: fiyat, detay: detay, bedenler: bedenler)
+                    let adet = data["adet"] as? Int ?? 1
+                    return Urunler(id: id, ad: ad, resim: resim, fiyat: fiyat, detay: detay, bedenler: bedenler,adet: adet)
                 }
                 self.urunlerCollectionView.reloadData()
             }
