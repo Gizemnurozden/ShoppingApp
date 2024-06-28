@@ -41,10 +41,10 @@ class kayitOl: UIViewController {
                 if error != nil
                 { self.uyariMesaj(titleInput: "Hata", messageInput: error?.localizedDescription ?? "Hata")
                     
-                } 
+                }
                 else
-                {//şuan için yazmadım yazıcam
-                    // performSegue(withIdentifier: "kayitOlToHesapSayfasi" , sender: nil)
+                {
+                    self.performSegue(withIdentifier: "kayitOlToHesapSayfasi" , sender: nil)
                 }
                 
             }
@@ -54,6 +54,9 @@ class kayitOl: UIViewController {
             let okButon = UIAlertAction(title: "Tamam", style: UIAlertAction.Style.default, handler: nil)
         }
     }
+    
+    
+   
     
     
     
