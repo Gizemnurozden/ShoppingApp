@@ -10,9 +10,6 @@ import Firebase
 import FirebaseAuth
 
 class HesapSayfasi: UIViewController {
-   
-    
-    @IBOutlet weak var isimLabel: UILabel!
     
     
     @IBOutlet weak var emailText: UILabel!
@@ -44,7 +41,7 @@ class HesapSayfasi: UIViewController {
         
         do {
             try Auth.auth().signOut()
-            self.performSegue(withIdentifier: "toViewController", sender: nil)
+            self.performSegue(withIdentifier: "hesabimToGiris", sender: nil)
         }catch {
             print("error")
         }

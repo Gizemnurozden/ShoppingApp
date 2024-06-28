@@ -6,9 +6,14 @@
 //
 
 import UIKit
+import Firebase
 
 class girisYap: UIViewController {
 
+    @IBOutlet weak var eMailText: UITextField!
+    
+    @IBOutlet weak var sifreText: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -17,7 +22,16 @@ class girisYap: UIViewController {
     
 
     @IBAction func girisYapButon(_ sender: Any) {
-        // burada girilen bilgiler doğru ise hesabım sayfasına geçiş yazılıcak.
+        if eMailText.text != "" && sifreText.text != "" {
+            Auth.auth().signIn(withEmail: eMailText.text!, password: sifreText.text!) { authdata, error in
+                if error != nil{
+                    self.uyariMesaj(titleInput: "Hata", messageInput: error?.localizedDescription ?? "Hata")
+                } else{
+                    self.performSegue(withIdentifier: "girisToHesabim" , sender: nil)
+                }
+            }
+            
+        }
         
     }
     
@@ -27,4 +41,10 @@ class girisYap: UIViewController {
         performSegue(withIdentifier: "girisToKayit", sender: nil)
     }
     
+    func uyariMesaj(titleInput:String , messageInput:String) {
+        let uyariMesaji = UIAlertController(title: titleInput, message: messageInput, preferredStyle: UIAlertController.Style.alert)
+        let tamamButon = UIAlertAction(title: "Tamam", style: UIAlertAction.Style.default, handler: nil)
+        uyariMesaji.addAction(tamamButon)
+        self.present(uyariMesaji , animated:true , completion: nil)
+    }
 }
