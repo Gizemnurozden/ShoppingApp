@@ -11,7 +11,6 @@ import FirebaseAuth
 class Sepetim: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    
     @IBOutlet weak var totalFiyat: UILabel!
     
     var sepetUrunleri = [Sepet]() // Sepet ürünlerini tutacak dizi
@@ -72,8 +71,8 @@ class Sepetim: UIViewController {
     
     @IBAction func alisverisiTamamla(_ sender: Any) {
         // Kullanıcının giriş yapıp yapmadığını kontrol edin
-        if Auth.auth().currentUser != nil {
-            performSegue(withIdentifier: "goToOdemeSayfasi", sender: nil)
+        if let currentUser = Auth.auth().currentUser {
+            kaydetSepetVeTamamlaSiparis(kullanici: currentUser)
         } else {
             let alert = UIAlertController(title: "Giriş Yapın", message: "Ödeme işlemini gerçekleştirmek için lütfen giriş yapın.", preferredStyle: .alert)
             let loginAction = UIAlertAction(title: "Giriş Yap", style: .default) { _ in
@@ -87,8 +86,60 @@ class Sepetim: UIViewController {
             present(alert, animated: true, completion: nil)
         }
     }
+
+    func kaydetSepetVeTamamlaSiparis(kullanici: User) {
+        let cartItems = sepetUrunleri.map { sepetUrun in
+            return [
+                "urunId": sepetUrun.urunId,
+                "ad": sepetUrun.ad,
+                "resim": sepetUrun.resim,
+                "fiyat": sepetUrun.fiyat,
+                "secilenBeden": sepetUrun.secilenBeden,
+                "adet": sepetUrun.adet
+            ]
+        }
+        
+        let orderData: [String: Any] = [
+            "kullaniciAdi": kullanici.displayName ?? "",
+            "kullaniciMaili": kullanici.email ?? "",
+            "urunler": cartItems,
+            "siparisTarihi": Timestamp(date: Date())
+        ]
+        
+        firestore.collection("GelenSiparisler").addDocument(data: orderData) { error in
+            if let error = error {
+                print("Sipariş kaydedilirken hata oluştu: \(error.localizedDescription)")
+            } else {
+                print("Sipariş başarıyla kaydedildi.")
+                self.sepetiTemizleVeYonlendirOdemeSayfasina()
+            }
+        }
+    }
+
+    func sepetiTemizleVeYonlendirOdemeSayfasina() {
+        firestore.collection("Sepet").getDocuments { (snapshot, error) in
+            if let error = error {
+                print("Hata: Sepet verileri silinirken \(error.localizedDescription)")
+            } else {
+                guard let documents = snapshot?.documents else {
+                    print("Hata: Sepet verileri bulunamadı.")
+                    return
+                }
+                
+                for document in documents {
+                    document.reference.delete()
+                }
+                
+                self.sepetUrunleri.removeAll()
+                self.updateTotalPrice()
+                self.tableView.reloadData()
+                
+                self.performSegue(withIdentifier: "goToOdemeSayfasi", sender: nil)
+            }
+        }
+    }
     
-    @IBAction func sepetiTemizle(_ sender: Any) {
+    @IBAction func sepetiTemizle(_ sender: Any?) {
         let alert = UIAlertController(title: "Sepeti Temizle", message: "Sepeti temizlemek istediğinize emin misiniz?", preferredStyle: .alert)
         
         let confirmAction = UIAlertAction(title: "Evet", style: .destructive) { _ in
@@ -147,44 +198,43 @@ extension Sepetim: UITableViewDataSource, UITableViewDelegate {
         
         return cell
     }
+    
     // Sepet Hücre Silme İşlevi
-       func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-           if editingStyle == .delete {
-               let urun = sepetUrunleri[indexPath.row]
-               
-               // Kullanıcıdan onay almak için uyarı mesajı
-               let alert = UIAlertController(title: "Ürünü Sil", message: "Bu ürünü sepetinizden silmek istediğinize emin misiniz?", preferredStyle: .alert)
-               
-               // Onayla butonu
-               let confirmAction = UIAlertAction(title: "Evet", style: .destructive) { _ in
-                   // Firestore'dan öğeyi silme
-                   self.firestore.collection("Sepet").document(urun.documentId).delete { error in
-                       if let error = error {
-                           print("Error removing document: \(error)")
-                       } else {
-                           print("Document successfully removed!")
-                           
-                           // Modeli güncelle
-                           self.sepetUrunleri.remove(at: indexPath.row)
-                           
-                           // Toplam fiyatı güncelle
-                           self.updateTotalPrice()
-                           
-                           // TableView'u güncelle
-                           tableView.deleteRows(at: [indexPath], with: .automatic)
-                       }
-                   }
-               }
-               
-               // İptal butonu
-               let cancelAction = UIAlertAction(title: "Hayır", style: .cancel, handler: nil)
-               
-               // Uyarı mesajına butonları ekle
-               alert.addAction(confirmAction)
-               alert.addAction(cancelAction)
-               
-               // Uyarı mesajını göster
-               present(alert, animated: true, completion: nil)
-           }
-       }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let urun = sepetUrunleri[indexPath.row]
+            
+            // Kullanıcıdan onay almak için uyarı mesajı
+            let alert = UIAlertController(title: "Ürünü Sil", message: "Bu ürünü sepetinizden silmek istediğinize emin misiniz?", preferredStyle: .alert)
+            
+            // Onayla butonu
+            let confirmAction = UIAlertAction(title: "Evet", style: .destructive) { _ in
+                // Firestore'dan öğeyi silme
+                self.firestore.collection("Sepet").document(urun.documentId).delete { error in
+                    if let error = error {
+                        print("Error removing document: \(error)")
+                    } else {
+                        print("Document successfully removed!")
+                        
+                        // Modeli güncelle
+                        self.sepetUrunleri.remove(at: indexPath.row)
+                        
+                        // Toplam fiyatı güncelle
+                        self.updateTotalPrice()
+                        
+                        // TableView'u güncelle
+                        tableView.deleteRows(at: [indexPath], with: .automatic)
+                    }
+                }
+            }
+            
+            // İptal butonu
+            let cancelAction = UIAlertAction(title: "Hayır", style: .cancel, handler: nil)
+            
+            alert.addAction(confirmAction)
+            alert.addAction(cancelAction)
+            
+            present(alert, animated: true, completion: nil)
+        }
+    }
 }

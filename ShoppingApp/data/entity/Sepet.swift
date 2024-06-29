@@ -5,7 +5,7 @@
 //  Created by Gizemnur Özden on 26.06.2024.
 //
 
-import UIKit
+import Foundation
 
 class Sepet {
     var documentId: String
@@ -25,5 +25,17 @@ class Sepet {
         self.secilenBeden = secilenBeden
         self.adet = adet
     }
+    
+    // Firestore'a kaydetmek için uygun formata dönüştürme fonksiyonu
+    func toAnyObject() -> Any {
+        return [
+            "documentId": documentId,
+            "urunId": urunId,
+            "ad": ad,
+            "resim": resim,
+            "fiyat": fiyat,
+            "secilenBeden": secilenBeden,
+            "adet": adet
+        ]
+    }
 }
-

@@ -16,6 +16,7 @@
 		C5036EF02C190B270001B832 /* FirebaseFirestoreCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = C5036EEF2C190B270001B832 /* FirebaseFirestoreCombine-Community */; };
 		C5036EF22C190B300001B832 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = C5036EF12C190B300001B832 /* FirebaseStorageCombine-Community */; };
 		C5036EF42C190B3C0001B832 /* FirebaseAuthCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = C5036EF32C190B3C0001B832 /* FirebaseAuthCombine-Community */; };
+		C5273A462C3028F000A7FDE9 /* OdemeSayfasi.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5273A452C3028F000A7FDE9 /* OdemeSayfasi.swift */; };
 		C592DF412C2C33610068634C /* Sepet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C592DF402C2C33610068634C /* Sepet.swift */; };
 		C5CF6CCF2BEFC2F700D0056C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CF6CCE2BEFC2F700D0056C /* AppDelegate.swift */; };
 		C5CF6CD12BEFC2F700D0056C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CF6CD02BEFC2F700D0056C /* SceneDelegate.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C5273A452C3028F000A7FDE9 /* OdemeSayfasi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OdemeSayfasi.swift; sourceTree = "<group>"; };
 		C592DF402C2C33610068634C /* Sepet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sepet.swift; sourceTree = "<group>"; };
 		C5CF6CCB2BEFC2F700D0056C /* ShoppingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShoppingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5CF6CCE2BEFC2F700D0056C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 			children = (
 				C5EAD9CF2C1A38C100E049B5 /* tableview */,
 				C5CF6CE82BEFFE7800D0056C /* DetaySayfasi.swift */,
+				C5273A452C3028F000A7FDE9 /* OdemeSayfasi.swift */,
 				C5CF6CD22BEFC2F700D0056C /* Anasayfa.swift */,
 				C5EAD9D62C1A44DB00E049B5 /* Shopping.swift */,
 			);
@@ -270,6 +273,7 @@
 				C5CF6CE72BEFFE5E00D0056C /* Sepetim.swift in Sources */,
 				C592DF412C2C33610068634C /* Sepet.swift in Sources */,
 				C5EAD9D12C1A38FE00E049B5 /* UrunlerHucre.swift in Sources */,
+				C5273A462C3028F000A7FDE9 /* OdemeSayfasi.swift in Sources */,
 				F9EB35032BFDF1C5000FC233 /* girisYap.swift in Sources */,
 				C5CF6CE92BEFFE7800D0056C /* DetaySayfasi.swift in Sources */,
 				C5EAD9D72C1A44DB00E049B5 /* Shopping.swift in Sources */,
