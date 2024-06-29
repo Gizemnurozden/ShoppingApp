@@ -27,7 +27,7 @@ class girisYap: UIViewController {
                 if error != nil{
                     self.uyariMesaj(titleInput: "Hata", messageInput: error?.localizedDescription ?? "Hata")
                 } else{
-                    self.performSegue(withIdentifier: "girisToHesabim" , sender: nil)
+                    self.performSegue(withIdentifier: "girisToTabBar" , sender: nil)
                 }
             }
             
