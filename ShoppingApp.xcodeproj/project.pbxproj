@@ -34,6 +34,8 @@
 		C5EAD9D72C1A44DB00E049B5 /* Shopping.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5EAD9D62C1A44DB00E049B5 /* Shopping.swift */; };
 		C5F907362C1B311C00589630 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = C5F907352C1B311C00589630 /* Kingfisher */; };
 		F92B24BA2C29C42D001F32FC /* sepetimHucre.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92B24B92C29C42D001F32FC /* sepetimHucre.swift */; };
+		F95158C92C3199B400E7B226 /* sifremiUnuttum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95158C82C3199B400E7B226 /* sifremiUnuttum.swift */; };
+		F95158CB2C31A61900E7B226 /* bilgileriGuncelle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95158CA2C31A61900E7B226 /* bilgileriGuncelle.swift */; };
 		F9EB34EC2BFDDBD5000FC233 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F9EB34EB2BFDDBD5000FC233 /* GoogleService-Info.plist */; };
 		F9EB35032BFDF1C5000FC233 /* girisYap.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EB35022BFDF1C5000FC233 /* girisYap.swift */; };
 		F9EB35052BFDF2BF000FC233 /* kayitOl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EB35042BFDF2BF000FC233 /* kayitOl.swift */; };
@@ -59,6 +61,8 @@
 		C5EAD9D02C1A38FE00E049B5 /* UrunlerHucre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrunlerHucre.swift; sourceTree = "<group>"; };
 		C5EAD9D62C1A44DB00E049B5 /* Shopping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shopping.swift; sourceTree = "<group>"; };
 		F92B24B92C29C42D001F32FC /* sepetimHucre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sepetimHucre.swift; sourceTree = "<group>"; };
+		F95158C82C3199B400E7B226 /* sifremiUnuttum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sifremiUnuttum.swift; sourceTree = "<group>"; };
+		F95158CA2C31A61900E7B226 /* bilgileriGuncelle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bilgileriGuncelle.swift; sourceTree = "<group>"; };
 		F9EB34EB2BFDDBD5000FC233 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F9EB35022BFDF1C5000FC233 /* girisYap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = girisYap.swift; sourceTree = "<group>"; };
 		F9EB35042BFDF2BF000FC233 /* kayitOl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kayitOl.swift; sourceTree = "<group>"; };
@@ -132,7 +136,9 @@
 			children = (
 				F9EB35042BFDF2BF000FC233 /* kayitOl.swift */,
 				F9EB35022BFDF1C5000FC233 /* girisYap.swift */,
+				F95158C82C3199B400E7B226 /* sifremiUnuttum.swift */,
 				C5CF6CE22BEFFDF200D0056C /* HesapSayfası.swift */,
+				F95158CA2C31A61900E7B226 /* bilgileriGuncelle.swift */,
 			);
 			path = Hesap;
 			sourceTree = "<group>";
@@ -272,11 +278,13 @@
 				F92B24BA2C29C42D001F32FC /* sepetimHucre.swift in Sources */,
 				C5CF6CE72BEFFE5E00D0056C /* Sepetim.swift in Sources */,
 				C592DF412C2C33610068634C /* Sepet.swift in Sources */,
+				F95158CB2C31A61900E7B226 /* bilgileriGuncelle.swift in Sources */,
 				C5EAD9D12C1A38FE00E049B5 /* UrunlerHucre.swift in Sources */,
 				C5273A462C3028F000A7FDE9 /* OdemeSayfasi.swift in Sources */,
 				F9EB35032BFDF1C5000FC233 /* girisYap.swift in Sources */,
 				C5CF6CE92BEFFE7800D0056C /* DetaySayfasi.swift in Sources */,
 				C5EAD9D72C1A44DB00E049B5 /* Shopping.swift in Sources */,
+				F95158C92C3199B400E7B226 /* sifremiUnuttum.swift in Sources */,
 				C5CF6CCF2BEFC2F700D0056C /* AppDelegate.swift in Sources */,
 				C5CF6CE32BEFFDF200D0056C /* HesapSayfası.swift in Sources */,
 				C5EAD9C92C1A270400E049B5 /* Kategoriler.swift in Sources */,
