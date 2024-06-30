@@ -41,6 +41,12 @@ class girisYap: UIViewController {
         performSegue(withIdentifier: "girisToKayit", sender: nil)
     }
     
+    @IBAction func sifremiUnuttumButon(_ sender: Any) {
+        performSegue(withIdentifier: "girisToSifremiUnuttum", sender: nil)
+        
+        
+    }
+    
     func uyariMesaj(titleInput:String , messageInput:String) {
         let uyariMesaji = UIAlertController(title: titleInput, message: messageInput, preferredStyle: UIAlertController.Style.alert)
         let tamamButon = UIAlertAction(title: "Tamam", style: UIAlertAction.Style.default, handler: nil)

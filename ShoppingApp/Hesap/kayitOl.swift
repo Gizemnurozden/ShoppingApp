@@ -31,41 +31,51 @@ class kayitOl: UIViewController {
         // kaydol butonunun işlevleri
         @IBAction func kaydolButonu(_ sender: Any) {
             if emailText.text != "" && sifreText.text != "" {
-                Auth.auth().createUser(withEmail: emailText.text!, password: sifreText.text!) { (authata , error) in
-                    if error != nil {
-                        self.uyariMesaj(titleInput: "Hata", messageInput: error?.localizedDescription ?? "Hata")
-                    } else {
-                        guard let user = authata?.user else { return }
-                        self.saveUserPhoneNumber(userID: user.uid, phoneNumber: self.telefonText.text!)
-                        self.performSegue(withIdentifier: "kayitOlToHesapSayfasi", sender: nil)
-                    }
-                }
-            } else {
-                let uyari = UIAlertController(title: "Bilgileri Tamamlayınız", message: "Eksik bilgiler mevcut.", preferredStyle: UIAlertController.Style.alert)
-                let okButon = UIAlertAction(title: "Tamam", style: UIAlertAction.Style.default, handler: nil)
-                uyari.addAction(okButon)
-                self.present(uyari, animated: true, completion: nil)
-            }
-        }
+                   Auth.auth().createUser(withEmail: emailText.text!, password: sifreText.text!) { (authata , error) in
+                       if error != nil {
+                           self.uyariMesaj(titleInput: "Hata", messageInput: error?.localizedDescription ?? "Hata")
+                       } else {
+                           guard let user = authata?.user else { return }
+                           self.telefonNoKaydet(userID: user.uid, phoneNumber: self.telefonText.text!)
+                 // email doğrulama kodları
+                           user.sendEmailVerification(completion: { (error) in
+                               if let error = error {
+                                   print("Doğrulama maili gönderilemedi \(error.localizedDescription)")
+                               } else {
+                                   print("Doğrulama maili başarıyla gönderildi")
+                               }
+                           })
+                           self.performSegue(withIdentifier: "kayitOlToTabBar", sender: nil)
+                       }
+                   }
+               } 
+            else {
+                   let uyari = UIAlertController(title: "Bilgileri Tamamlayınız", message: "Eksik bilgiler mevcut.", preferredStyle: UIAlertController.Style.alert)
+                   let tamamButon = UIAlertAction(title: "Tamam", style: UIAlertAction.Style.default, handler: nil)
+                   uyari.addAction(tamamButon)
+                   self.present(uyari, animated: true, completion: nil)
+               }
+           }
 
-        // Telefon numarasını Firebase Firestore'da saklayan fonksiyon
-        func saveUserPhoneNumber(userID: String, phoneNumber: String) {
-            let db = Firestore.firestore()
-            
-            db.collection("users").document(userID).setData(["phone": phoneNumber]) { error in
-                if let error = error {
-                    print("Error saving phone number: \(error.localizedDescription)")
-                } else {
-                    print("Phone number saved successfully")
-                }
-            }
-        }
+                  // Telefon numarasını veritabanında saklayan fonksiyon
+                  func telefonNoKaydet(userID: String, phoneNumber: String) {
+                      let db = Firestore.firestore()
+                // Veritabanında kullanıcıya telefon no kaydetme
+                      db.collection("users").document(userID).setData(["phone": phoneNumber]) { error in
+                          if let error = error {
+               // hata alırsak localizedDescription ile veritabanının verdiği hata yazıcak
+                              print("Telefon numarası kaydedilemedi \(error.localizedDescription)")
+                          } else {
+                              print("Telefon numarası başarıyla kaydedildi")
+                          }
+                      }
+                  }
 
-        // Hata mesajı için klasik bir uyarı mesajı fonksiyonu yazdık.
-        func uyariMesaj(titleInput: String, messageInput: String) {
-            let uyariMesaji = UIAlertController(title: titleInput, message: messageInput, preferredStyle: UIAlertController.Style.alert)
-            let tamamButon = UIAlertAction(title: "Tamam", style: UIAlertAction.Style.default, handler: nil)
-            uyariMesaji.addAction(tamamButon)
-            self.present(uyariMesaji, animated: true, completion: nil)
-        }
-    }
+                  // Hata mesajı için klasik bir uyarı mesajı fonksiyonu yazdık.
+                  func uyariMesaj(titleInput: String, messageInput: String) {
+                      let uyariMesaji = UIAlertController(title: titleInput, message: messageInput, preferredStyle: UIAlertController.Style.alert)
+                      let tamamButon = UIAlertAction(title: "Tamam", style: UIAlertAction.Style.default, handler: nil)
+                      uyariMesaji.addAction(tamamButon)
+                      self.present(uyariMesaji, animated: true, completion: nil)
+                  }
+              }
