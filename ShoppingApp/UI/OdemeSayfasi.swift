@@ -53,7 +53,11 @@ class OdemeSayfasi: UIViewController {
 
     @IBAction func siparisimiTamamlaTiklandi(_ sender: Any) {
         guard let kullaniciAdi = kullaniciAdiLabel.text,
-              let adres = adresText.text else {
+              let adres = adresText.text, !adres.isEmpty else {
+            let alert = UIAlertController(title: "Eksik Bilgi", message: "Lütfen adres bilgilerini doldurun.", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "Tamam", style: .default, handler: nil)
+            alert.addAction(okAction)
+            present(alert, animated: true, completion: nil)
             return
         }
         
@@ -105,7 +109,6 @@ class OdemeSayfasi: UIViewController {
         }
     }
 
-    
     func sepetiTemizle() {
         let firestore = Firestore.firestore()
         firestore.collection("Sepet").getDocuments { (snapshot, error) in

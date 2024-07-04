@@ -86,7 +86,6 @@ class Sepetim: UIViewController {
             present(alert, animated: true, completion: nil)
         }
     }
-
     func kaydetSepetVeTamamlaSiparis(kullanici: User) {
         let cartItems = sepetUrunleri.map { sepetUrun in
             return [
@@ -102,8 +101,9 @@ class Sepetim: UIViewController {
         let orderData: [String: Any] = [
             "kullaniciAdi": kullanici.displayName ?? "",
             "kullaniciMaili": kullanici.email ?? "",
+            "adres": "", // Bu kısmı boş bırakıyoruz, çünkü adres burada girilmeyecek
             "urunler": cartItems,
-            "siparisTarihi": Timestamp(date: Date())
+            "siparisTarihi": Timestamp(date: Date()),
         ]
         
         firestore.collection("GelenSiparisler").addDocument(data: orderData) { error in
@@ -111,12 +111,12 @@ class Sepetim: UIViewController {
                 print("Sipariş kaydedilirken hata oluştu: \(error.localizedDescription)")
             } else {
                 print("Sipariş başarıyla kaydedildi.")
-                self.sepetiTemizleVeYonlendirOdemeSayfasina()
+                self.sepetiTemizleVeYonlendirOdemeSayfasina(adres: "", kullanici: kullanici)
             }
         }
     }
 
-    func sepetiTemizleVeYonlendirOdemeSayfasina() {
+    func sepetiTemizleVeYonlendirOdemeSayfasina(adres: String, kullanici: User) {
         firestore.collection("Sepet").getDocuments { (snapshot, error) in
             if let error = error {
                 print("Hata: Sepet verileri silinirken \(error.localizedDescription)")
@@ -134,9 +134,11 @@ class Sepetim: UIViewController {
                 self.updateTotalPrice()
                 self.tableView.reloadData()
                 
+                // Ödeme sayfasına gitmek için geçiş yap
                 self.performSegue(withIdentifier: "goToOdemeSayfasi", sender: nil)
             }
         }
+
     }
     
     @IBAction func sepetiTemizle(_ sender: Any?) {

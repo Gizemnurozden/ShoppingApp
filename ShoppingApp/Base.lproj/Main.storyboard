@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="200" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="daY-Qc-dgY">
-                                <rect key="frame" x="0.0" y="44" width="393" height="808"/>
+                                <rect key="frame" x="0.0" y="103" width="393" height="666"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="kategorilerHucre" id="cv7-gq-1ON" customClass="KategorilerHucre" customModule="ShoppingApp" customModuleProvider="target">
@@ -116,7 +116,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8ZS-Xq-sag">
-                                <rect key="frame" x="0.0" y="96" width="393" height="756"/>
+                                <rect key="frame" x="0.0" y="103" width="393" height="666"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="x8h-pq-Ijc">
                                     <size key="itemSize" width="180" height="300"/>
@@ -432,7 +432,7 @@
                     <connections>
                         <outlet property="tableView" destination="PVj-NR-RkN" id="ubW-rR-Rnb"/>
                         <outlet property="totalFiyat" destination="qFa-Nn-eY3" id="4kK-mW-Pvu"/>
-                        <segue destination="zW1-LT-GsI" kind="show" identifier="goToOdemeSayfasi" id="rhd-Ch-jQS"/>
+                        <segue destination="5kA-lC-X0I" kind="show" identifier="goToOdemeSayfasi" id="rhd-Ch-jQS"/>
                         <segue destination="iSW-AP-SF8" kind="presentation" identifier="goToGirisSayfasi" modalPresentationStyle="fullScreen" id="uDM-T3-I1u"/>
                     </connections>
                 </viewController>
@@ -440,7 +440,7 @@
             </objects>
             <point key="canvasLocation" x="1941" y="313"/>
         </scene>
-        <!--Odeme Sayfasi-->
+        <!--Ödeme Sayfası-->
         <scene sceneID="zsg-QS-E8i">
             <objects>
                 <viewController id="zW1-LT-GsI" customClass="OdemeSayfasi" customModule="ShoppingApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -520,7 +520,7 @@
                         <viewLayoutGuide key="safeArea" id="Gvi-2f-eba"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="sPp-BE-6XT"/>
+                    <navigationItem key="navigationItem" title="Ödeme Sayfası" id="sPp-BE-6XT"/>
                     <connections>
                         <outlet property="adresText" destination="nj8-sO-1L8" id="JJn-cK-FiU"/>
                         <outlet property="kartAy" destination="8yg-Cg-gKQ" id="ghR-VM-Kvc"/>
@@ -531,12 +531,12 @@
                         <outlet property="kullaniciAdiLabel" destination="TO5-PT-zqL" id="LiS-fK-bo6"/>
                         <outlet property="odemeYontemiLabel" destination="zsP-j8-tuJ" id="oJJ-JX-yTB"/>
                         <outlet property="odemeYontemiUI" destination="VaL-LF-TYX" id="f5N-uI-xcR"/>
-                        <segue destination="BYZ-38-t0r" kind="showDetail" identifier="goToAnasayfa" id="uwO-dY-unJ"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="goToAnasayfa" id="pwZ-hY-vd4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Grs-yc-npw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3316.7938931297708" y="313.38028169014086"/>
+            <point key="canvasLocation" x="4428" y="313"/>
         </scene>
         <!--Hesabım-->
         <scene sceneID="W1u-hh-Td5">
@@ -618,7 +618,7 @@
         <!--Giris Yap-->
         <scene sceneID="R0r-hA-oCs">
             <objects>
-                <viewController storyboardIdentifier="loginViewController" id="iSW-AP-SF8" customClass="girisYap" customModule="ShoppingApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="iSW-AP-SF8" customClass="girisYap" customModule="ShoppingApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fec-Ce-TZU">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -700,7 +700,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f7i-e4-Mky" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1029.7709923664122" y="1045.0704225352113"/>
+            <point key="canvasLocation" x="1192" y="1077"/>
         </scene>
         <!--Kayit Ol-->
         <scene sceneID="srr-Lq-HQa">
@@ -766,7 +766,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JNN-VW-ybM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-321.37404580152668" y="1045.0704225352113"/>
+            <point key="canvasLocation" x="-430" y="1379"/>
         </scene>
         <!--Bilgileri Guncelle-->
         <scene sceneID="2LE-eS-vCA">
@@ -890,8 +890,9 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="JZ3-xt-ovS" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Anasayfa" image="house.fill" catalog="system" id="poL-k8-Git"/>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="Tgl-Jw-qM8"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="PE3-5W-gRC">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="96"/>
+                        <rect key="frame" x="0.0" y="59" width="393" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -901,7 +902,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HgL-BV-NPl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1031.8840579710145" y="-450"/>
+            <point key="canvasLocation" x="1060" y="-450"/>
         </scene>
         <!--Sifremi Unuttum-->
         <scene sceneID="Kte-uc-MZU">
@@ -958,16 +959,35 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rVP-dC-jwd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2133.5877862595421" y="1095.0704225352113"/>
+            <point key="canvasLocation" x="3172" y="1045"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="WTa-tb-Vhb">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ugD-uj-xwa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5kA-lC-X0I" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="LYc-IJ-ncH"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5iW-wU-ahx">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="zW1-LT-GsI" kind="relationship" relationship="rootViewController" id="lCg-8Z-y2p"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="3172" y="313"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="pFP-sb-Gyq"/>
-        <segue reference="5aD-Kt-CmA"/>
-        <segue reference="Dcp-Zt-VBg"/>
-        <segue reference="hbg-0Q-ZP1"/>
-        <segue reference="d7O-Tx-kvs"/>
-        <segue reference="z2C-zd-n81"/>
+        <segue reference="YcG-fr-BRY"/>
+        <segue reference="MSA-5O-IEV"/>
+        <segue reference="uDM-T3-I1u"/>
+        <segue reference="u7c-9m-Q4F"/>
+        <segue reference="Kqa-AU-kN0"/>
+        <segue reference="pwZ-hY-vd4"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="cart.fill" catalog="system" width="128" height="102"/>
